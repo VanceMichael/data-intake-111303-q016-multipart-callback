@@ -1,0 +1,68 @@
+[
+  {
+    "name": "清单在后正常接收",
+    "routes": [],
+    "input": {
+      "transfer": "after-manifest"
+    },
+    "expected": {
+      "received": [
+        "d1"
+      ],
+      "conflicts": []
+    },
+    "required": [],
+    "kind": "multipart",
+    "mode": "after-manifest"
+  },
+  {
+    "name": "同编号不同内容隔离",
+    "routes": [],
+    "input": {
+      "transfer": "conflict"
+    },
+    "expected": {
+      "received": [
+        "d1"
+      ],
+      "conflicts": [
+        "d1"
+      ]
+    },
+    "required": [],
+    "kind": "multipart",
+    "mode": "conflict"
+  },
+  {
+    "name": "半截请求没有完成收据",
+    "routes": [],
+    "input": {
+      "transfer": "truncated"
+    },
+    "expected": {
+      "received": [],
+      "incomplete": [
+        "d1"
+      ]
+    },
+    "required": [],
+    "kind": "multipart",
+    "mode": "truncated"
+  },
+  {
+    "name": "文件包含近似边界仍保真",
+    "routes": [],
+    "input": {
+      "transfer": "boundary-like"
+    },
+    "expected": {
+      "received": [
+        "d1"
+      ],
+      "conflicts": []
+    },
+    "required": [],
+    "kind": "multipart",
+    "mode": "boundary-like"
+  }
+]
